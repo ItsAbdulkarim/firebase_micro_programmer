@@ -96,12 +96,12 @@ class SignInScreen extends StatelessWidget {
                                 child: Text('Forgotten Password?'))),
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.67,
-                          left: 50,
+                          left: 40,
                           right: 0,
                           child: Row(
                             children: [
                               Text(
-                                "Already have an account?",
+                                "Don't have an account?",
                                 style: TextStyle(fontSize: 18),
                               ),
                               TextButton(
@@ -113,7 +113,7 @@ class SignInScreen extends StatelessWidget {
                                     ));
                                   },
                                   child: Text(
-                                    'Sign Up',
+                                    'Register here',
                                     style: TextStyle(fontSize: 18),
                                   )),
                             ],
