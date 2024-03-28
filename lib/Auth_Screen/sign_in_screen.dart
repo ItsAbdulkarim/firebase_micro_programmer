@@ -1,5 +1,8 @@
 import 'package:firebase_micro_programmer/Auth_Screen/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/auth_provider.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
@@ -9,18 +12,20 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('images/login.png'),
-          fit: BoxFit.cover,
-        )),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
+              image: AssetImage('images/login.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -33,22 +38,26 @@ class SignInScreen extends StatelessWidget {
                     child: Stack(
                       children: [
                         Positioned(
-                            top: MediaQuery.of(context).size.height * 0.35,
-                            left: 40,
-                            child: Text(
-                              'Sign In',
-                              style: TextStyle(
-                                  color: Color(0xffAA076B),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 40),
-                            )),
+                          top: MediaQuery.of(context).size.height * 0.35,
+                          left: 40,
+                          child: Text(
+                            'Sign In',
+                            style: TextStyle(
+                              color: Color(0xffAA076B),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                            ),
+                          ),
+                        ),
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.45,
                           left: 0,
                           right: 0,
                           child: Container(
                             padding: EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 25),
+                              vertical: 20,
+                              horizontal: 25,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                               borderRadius: BorderRadius.circular(20),
@@ -59,7 +68,9 @@ class SignInScreen extends StatelessWidget {
                                   controller: emailControllerr,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 15),
+                                      vertical: 15,
+                                      horizontal: 15,
+                                    ),
                                     labelText: 'Email',
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
@@ -74,7 +85,9 @@ class SignInScreen extends StatelessWidget {
                                   controller: passwordControllerr,
                                   decoration: InputDecoration(
                                     contentPadding: EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 15),
+                                      vertical: 15,
+                                      horizontal: 15,
+                                    ),
                                     labelText: 'Password',
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
@@ -89,11 +102,13 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                            top: MediaQuery.of(context).size.height * 0.63,
-                            left: 100,
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Text('Forgotten Password?'))),
+                          top: MediaQuery.of(context).size.height * 0.63,
+                          left: 100,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text('Forgotten Password?'),
+                          ),
+                        ),
                         Positioned(
                           top: MediaQuery.of(context).size.height * 0.67,
                           left: 40,
@@ -105,17 +120,21 @@ class SignInScreen extends StatelessWidget {
                                 style: TextStyle(fontSize: 18),
                               ),
                               TextButton(
-                                  onPressed: () {
-                                    Navigator.push(context, MaterialPageRoute(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
                                       builder: (context) {
                                         return SignUpScreen();
                                       },
-                                    ));
-                                  },
-                                  child: Text(
-                                    'Register here',
-                                    style: TextStyle(fontSize: 18),
-                                  )),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Register here',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -132,31 +151,37 @@ class SignInScreen extends StatelessWidget {
                     child: Stack(
                       children: [
                         Positioned(
-                            bottom: 100,
-                            right: 30,
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: [
-                                  Text(
-                                    'Sign in',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold),
+                          bottom: 100,
+                          right: 30,
+                          child: GestureDetector(
+                            onTap: () async {
+
+                            },
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Sign in',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Image.asset('images/Arrow.png')
-                                ],
-                              ),
-                            )),
+                                ),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Image.asset('images/Arrow.png'),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 )
-              ]),
+              ],
+            ),
+          ),
         ),
       ),
     );
