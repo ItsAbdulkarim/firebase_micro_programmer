@@ -155,7 +155,14 @@ class SignInScreen extends StatelessWidget {
                           right: 30,
                           child: GestureDetector(
                             onTap: () async {
-
+                              var response =
+                              await context.read<AuthProvider>().signIn(
+                                emailControllerr.text.trim(),
+                                passwordControllerr.text.trim(),
+                              );
+                              await ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                  content: Text(response.toString())));
                             },
                             child: Row(
                               children: [

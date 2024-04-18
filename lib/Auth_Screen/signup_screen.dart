@@ -1,5 +1,6 @@
 import 'package:firebase_micro_programmer/Auth_Screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/auth_provider.dart';
@@ -148,6 +149,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 right: 30,
                 child: GestureDetector(
                   onTap: () async {
+                    showDialog(context: context, builder: (context) {
+                      
+                      return AlertDialog(
+                        
+                        title: Text('Logging In'),
+                        content: Column(
+mainAxisSize: MainAxisSize.min,
+                          children: [
+
+                            SpinKitDualRing(color: Color(0xffAA076B)),
+                       SizedBox(height: 10,),
+                      Text('Logging in, please wait...'),
+
+
+                          ],
+                        ),
+
+                      );
+                      
+                    },);
+                    
+                    
+                    var response = await context.read<AuthProvider>().signUp(
+                      emailController.text.trim(),
+                      passwordController.text.trim(),
+                    );
+                    print(response);
+                    await ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(response.toString())),
+                    );
 
 
                     Navigator.push(context, MaterialPageRoute(
